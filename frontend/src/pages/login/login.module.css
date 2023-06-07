@@ -55,6 +55,11 @@
     
 }
 
+.clicavel:hover {
+    color:rgb(95, 90, 99);
+    cursor: pointer;
+}
+
 
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -62,11 +67,12 @@
     opacity: 1; /* Firefox */
   }
   
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: rgb(194, 194, 194);
-  }
+}
   
-  ::-ms-input-placeholder { /* Microsoft Edge */
+::-ms-input-placeholder { /* Microsoft Edge */
     color: rgb(194, 194, 194), radial-gradient(ellipse at right, rgb(69, 100, 199), transparent), radial-gradient(ellipse at left, rgb(69, 100, 199), transparent);
-  }
+}
+
 

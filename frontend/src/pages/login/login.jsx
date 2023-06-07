@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import styles from './login.module.css'
+import { useNavigate } from "react-router-dom"
 
 // const url = 'http://localhost:4000'
 
@@ -8,9 +9,9 @@ import styles from './login.module.css'
 
 
 export default function Login(){
-    // const router = useRouter()
+    const navigate = useNavigate()
 
-    // const id = 3
+    const id = 3
 
     const [formData, setFormData] = useState({
         email: '',
@@ -30,7 +31,7 @@ export default function Login(){
         //         console.log(err)
         //     })
 
-        // router.push(`/user/${id}/inicio`)
+        navigate(`/user/${id}/inicio`, {state: {id: id}})
 
     }  
     
@@ -60,8 +61,14 @@ export default function Login(){
                     Login
                 </button>
                 <div className={styles.texto}>
-                    <div>Ainda não se registrou? Registre-se aqui!</div>
-                    <div>Esqueci a senha</div>
+                    <div 
+                        onClick={() => navigate('/registro')}
+                        className={styles.clicavel}>
+                            Ainda não se registrou? Registre-se aqui!
+                    </div>
+                    <div 
+                        onClick={() => navigate('/redefinir')}
+                        className={styles.clicavel}>Esqueci a senha</div>
                 </div>
             </form>
         </div>    
