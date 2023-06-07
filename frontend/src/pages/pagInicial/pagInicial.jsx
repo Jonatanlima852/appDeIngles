@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './pagInicial.module.css'
 
 export default function PagInicial(){
+    const navigate = useNavigate()
     return (
         <div className={styles.tela}>
             {/* Cabeçalho */}
@@ -15,7 +17,7 @@ export default function PagInicial(){
                         </div>
                         <button
                             className={styles.botaoLogin}
-                            onClick={() => console.log('ok')}>
+                            onClick={() => navigate('/login')}>
                             Login
                         </button>
                     </div>
@@ -25,7 +27,7 @@ export default function PagInicial(){
                         </div>
                         <button
                             className={styles.botaoRegistrar}
-                            onClick={() => console.log('ok')}>
+                            onClick={() => navigate('/registrar')}>
                             Registrar
                         </button> 
                     </div>

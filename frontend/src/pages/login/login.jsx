@@ -31,7 +31,7 @@ export default function Login(){
         //         console.log(err)
         //     })
 
-        navigate(`/user/${id}/inicio`, {state: {id: id}})
+        navigate(`/user/inicio`, {state: {id: id}})
 
     }  
     
