@@ -1,12 +1,9 @@
 import React, {useState} from "react"
 import styles from './registro.module.css'
 import { useNavigate } from "react-router-dom"
+import axios from 'axios'
 
-// const url = 'http://localhost:4000'
-
-
-
-
+const url = 'http://localhost:4000'
 
 export default function Registro(){
     const navigate = useNavigate()
@@ -23,15 +20,15 @@ export default function Registro(){
     const handleSubmit = (e) => {
         e.preventDefault()
     
-        // axios.post(`${url}/registrar`, formData)
-        //     .then(response => {
-        //         console.log('Enviado pae!')
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+        axios.post(`http://localhost:4000/registrar`, formData)
+            .then(response => {
+                console.log('Enviado pae!')
+                navigate(`/user/inicio`, {state: {id: id}})
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
-        navigate(`/user/inicio`, {state: {id: id}})
 
     }  
     
@@ -61,7 +58,7 @@ export default function Registro(){
                     onChange={handleChange}/>
                 <input type="password" name="confirmarsenha" placeholder="Confirmar senha" 
                     className={styles.input}
-                    value={formData.senha}
+                    value={formData.confSenha}
                     onChange={handleChange}/>
                 <button
                     className={styles.submeter}

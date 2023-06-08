@@ -46,6 +46,11 @@
     font-size: 20px;
 }
 
+.submeter:hover{
+    background-color:rgb(202, 201, 203);
+    cursor: pointer;
+}
+
 .texto{
     color: white;
     display: flex;
