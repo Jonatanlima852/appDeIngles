@@ -10,7 +10,7 @@ export default function RoutesComponent(){
         <Routes>
             <Route path="/" element={<PagInicial />} />
             <Route exact path="/login" element={<Login />} />
-            <Route exact path="/registro" element={<Registro />} />
+            <Route exact path="/registrar" element={<Registro />} />
             <Route exact path="/user/inicio" element={<Inicio />} />
 
         </Routes>

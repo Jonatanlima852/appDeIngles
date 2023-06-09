@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import styles from './login.module.css'
 import { useNavigate } from "react-router-dom"
+import axios from 'axios'
 
-// const url = 'http://localhost:4000'
 
 
 
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function Login(){
     const navigate = useNavigate()
-
+    const url = 'http://localhost:4000'
     const id = 3
 
     const [formData, setFormData] = useState({
@@ -20,19 +20,20 @@ export default function Login(){
 
 
 
+    const [error, setError] = useState('')
+
     const handleSubmit = (e) => {
         e.preventDefault()
     
-        // axios.post(`${url}/registrar`, formData)
-        //     .then(response => {
-        //         console.log('Enviado pae!')
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-
-        navigate(`/user/inicio`, {state: {id: id}})
-
+        axios.post(`${url}/login`, formData)
+            .then(res => {
+                console.log('Enviado pae!')
+                navigate(`/user/inicio`, {state: {id: id}})
+            })
+            .catch(err => {
+                console.log(err.response.data)
+                setError(err.response.data)
+            })
     }  
     
     const handleChange = (e) => {
@@ -43,6 +44,9 @@ export default function Login(){
     
     return (
         <div className={styles.telaForms}>
+            <div>
+                {error}
+            </div>
             <form 
                 onSubmit = {handleSubmit}
                 className={styles.forms}>
@@ -62,7 +66,7 @@ export default function Login(){
                 </button>
                 <div className={styles.texto}>
                     <div 
-                        onClick={() => navigate('/registro')}
+                        onClick={() => navigate('/registrar')}
                         className={styles.clicavel}>
                             Ainda não se registrou? Registre-se aqui!
                     </div>

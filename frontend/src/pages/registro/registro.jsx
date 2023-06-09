@@ -11,22 +11,25 @@ export default function Registro(){
     const id = 3
 
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         senha: '',
+        confirmarsenha: '',
     })
 
-
+    const [error, setError] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
     
-        axios.post(`http://localhost:4000/registrar`, formData)
-            .then(response => {
+        axios.post(`${url}/registrar`, formData)
+            .then(resp => {
                 console.log('Enviado pae!')
                 navigate(`/user/inicio`, {state: {id: id}})
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response.data)
+                setError(err.response.data)
             })
 
 
@@ -40,6 +43,9 @@ export default function Registro(){
     
     return (
         <div className={styles.telaForms}>
+            <div>
+                {error}
+            </div>
             <form 
                 onSubmit = {handleSubmit}
                 className={styles.forms}>
