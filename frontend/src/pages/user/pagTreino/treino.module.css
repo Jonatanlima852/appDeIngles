@@ -1,0 +1,109 @@
+.background {
+    width:100vw;
+    height:100vh;
+    background-color:#446c9e;
+    border: 0;
+    margin:0;
+    font-size: 40;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cabecalho {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+.modoTreino {
+    margin: 30px;
+    border-radius: 20px;
+    border: solid 2px white;
+    font-size: 40px;
+    width: 30vw;
+}
+
+.texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: solid 2px white;
+    margin: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    height:50vh;
+}
+
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.botaoSolucao {
+    padding: 6px;
+    border-radius: 5px;
+    border: solid 2px #224774;
+    color: #446c9e;
+    font-size: 20px;
+
+}
+
+.botaoSolucao:hover {
+    background-color: #e0e9f4;
+    color:#244c7c;
+    box-shadow: black;
+    cursor: pointer;
+}
+
+.botaoProximo {
+    background-color: #f0f6f0;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    color: green;
+    border: 2px green solid;
+}
+
+.botaoProximo:hover{
+    background-color: #e0e9f4;
+    color:rgb(2, 90, 2);
+    box-shadow: black;
+    cursor: pointer;
+
+}
+
+.centralizarInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 30px;
+    border: solid 2px white;
+    background-color: aliceblue;
+    outline: none;
+    width: calc(100% - 10px)
+
+}
+
+.pergunta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
