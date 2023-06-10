@@ -14,7 +14,7 @@ module.exports = app => {
         // To query /v2/top-headlines
         // All options passed to topHeadlines are optional, but you need to include at least one of them
         await newsapi.v2.topHeadlines({
-            q: tema,
+            category: tema,
             language: 'en',
             sortBy: 'relevancy',
         }).then(response => {
