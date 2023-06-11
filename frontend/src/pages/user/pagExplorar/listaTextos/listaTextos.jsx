@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react"
 import styles from './listaTextos.module.css'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import axios from 'axios'
 
 export default function ListaTextos(){
-    const temaInicial = 'tech'
+    const temaInicial = 'technology'
+    const location = useLocation()
+    const email = location.state.email
     const navigate = useNavigate()
     const url = 'http://localhost:4000'
     const [textos, setTextos] = useState([])
@@ -33,15 +35,13 @@ export default function ListaTextos(){
         const item = e.target
         const texto = item.innerHTML.toString()
         await setTema(() => texto)
-
-    
     } 
      
     const renderizarArtigos = (artigos) => artigos.map(artigo => {
         return (
             <div className={styles.artigo}
                 onClick={() => {
-                    navigate('/user/texto', {state: {texto: artigo.content}})
+                    navigate('/user/texto', {state: {texto: artigo.content, email: email}})
                 }}>
                 {artigo.title}
             </div>
@@ -52,7 +52,7 @@ export default function ListaTextos(){
         <div className={styles.background}>
             <div className={styles.cabecalho}>
                 <div className={styles.voltar} 
-                onClick={() => navigate('/user/inicio')}> 
+                onClick={() => navigate('/user/inicio', {state: {email: email}})}> 
                 {'<<'} 
                 </div>
                 <div className={styles.titulo}>Galeria de Temas</div>
@@ -60,11 +60,11 @@ export default function ListaTextos(){
             <div className={styles.corpo}>
                 <div className={styles.listaTemas}>
                     <ul className={styles.lista}>
-                        <li id="1" className={1 === ative ? styles.ativo : styles.item} onClick={activate}>Tech</li>
+                        <li id="1" className={1 === ative ? styles.ativo : styles.item} onClick={activate}>Technology</li>
                         <li id="2" className={2 === ative ? styles.ativo : styles.item} onClick={activate}>Science</li>
                         <li id="3" className={3 === ative ? styles.ativo : styles.item} onClick={activate}>Sports</li>
                         <li id="4" className={4 === ative ? styles.ativo : styles.item} onClick={activate}>Policy</li>
-                        <li id="5" className={5 === ative ? styles.ativo : styles.item} onClick={activate}>Economy</li>
+                        <li id="5" className={5 === ative ? styles.ativo : styles.item} onClick={activate}>Business</li>
                         <li id="6" className={6 === ative ? styles.ativo : styles.item} onClick={activate}>Science</li>
                         <li id="7" className={7 === ative ? styles.ativo : styles.item} onClick={activate}>Tech</li>
                         <li id="8" className={8 === ative ? styles.ativo : styles.item} onClick={activate}>Science</li>

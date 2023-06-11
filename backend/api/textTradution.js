@@ -1,47 +1,50 @@
 const axios = require('axios');
-
+const fetch = require("node-fetch")
 
 module.exports = app => {
-    const getTradution = async (req, res) => {
+    const {User} = app.config.userModel
 
+    const getTradution = async (req, res) => {
+        const {existsOrError} = app.api.validation
         const params = { ...req.body }
         const word = params.palavra
 
-        const traducao = await axios("https://libretranslate.com/translate", {
-            method: "POST",
-            data: JSON.stringify({
-                q: word,
-                source: "auto",
-                target: "pt",
-                format: "text",
-                api_key: ""
-            }),
-            headers: { "Content-Type": "application/json" }
-        });
-
-        console.log(await traducao.data.translatedText);
-
+        // const traducao = await fetch("https://libretranslate.com/translate", {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         q: 'car',
+        //         source: "auto",
+        //         target: "pt", 
+        //         format: "text",
+        //         api_key: ""
+        //     }),
+        //     headers: { "Content-Type": "application/json" }
+        // });
+        // const resposta = await traducao.json()
+        // console.log(resposta);
 
         // salvando a palavra no banco de dados
         email = params.email
 
         try {
-            existsOrError(user.email, 'E-mail não informado')
-            existsOrError(user.senha, 'Senha não informada')
-
+            existsOrError(email, 'E-mail não informado')
             const userFromDB = await User.findOne({ email: email })
-
             if (!userFromDB) return res.status(400).send('Usuário não encontrado! Registre-se')
 
-            const isMatch = bcrypt.compareSync(user.senha, userFromDB.password)
-            if (!isMatch) return res.status(401).send('Email/Senha inválidos!')
+            userFromDB.words.push(word)
+            console.log(userFromDB)
 
-            (_ => res.status(204).send())()
-
+            userFromDB.save()
+            .then(() => {
+                res.status(204).send()
+            }) 
+            .catch((error) => {
+                console.error('Erro ao inserir usuário:', error);
+            });
         } catch (msg) {
             console.log(msg)
             return res.status(400).send(msg)
-        }
+        } 
 
 
 

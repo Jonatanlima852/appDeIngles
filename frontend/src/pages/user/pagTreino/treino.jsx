@@ -46,7 +46,7 @@ export default function Treino (){
     
             return (
                 <div className={styles.pergunta}>
-                    Qual o significado da palavra {palavraEscolhida.palavra}?
+                    Qual o significado da palavra {palavraEscolhida}?
                 </div>
             )
     }, [palavras]) 

@@ -8,41 +8,29 @@ import logoTreino from './images/logoTreino.png'
 
 export default function Inicio (){
     const location = useLocation()
-    const nome = 'Gollum'
-    const id = localStorage.getItem('userId')
-    const local = localStorage;
-
-    const renderizarLocalStorage = () => { for(let i in Object.keys(local)){
-        let chave = Object.keys(local)[i]
-        console.log(chave,'/', local[chave])
-    }}
+    const email = location.state.email
+    const nome = 'Jonatan'
 
     const navigate = useNavigate()
 
     return (
         <div className={styles.tela}>
-            {/* Veja bem: 
-            {location.state.id}/
-            {id}/
-            <div>
-                {renderizarLocalStorage()}
-            </div> */}
             <div className={styles.cabecalho}>
                 <div className={styles.saudacao}>
                     Olá, {nome}! Que tal umas lições?
                 </div>
                 <div className={styles.estatisticas}>
-                    Parabéns! Vc aprendeu 1173 novas palavras!
+                    Parabéns! Vc aprendeu X novas palavras!
                 </div>
             </div>
             <div className={styles.modos}>
                 <div className={styles.modoExplorar}
-                    onClick={() => navigate('/user/explorar')}>
+                    onClick={() => navigate('/user/listaTextos', {state: {email: email}})}>
                     <div className={styles.titulos}>Explorar</div>
                     <img src={logoExplorar} alt="Explorar"/>
                 </div>
                 <div className={styles.modoTreino}
-                    onClick={() => navigate('/user/treino')}>
+                    onClick={() => navigate('/user/treino', {state: {email: email}})}>
                     <div className={styles.titulos}>Treino</div>
                     <img src={logoTreino} alt="Treino" />
                 </div>

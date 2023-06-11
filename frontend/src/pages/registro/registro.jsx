@@ -25,7 +25,7 @@ export default function Registro(){
         axios.post(`${url}/registrar`, formData)
             .then(resp => {
                 console.log('Enviado pae!')
-                navigate(`/user/inicio`, {state: {id: id}})
+                navigate(`/user/inicio`, {state: {email: formData.email}})
             })
             .catch(err => {
                 console.log(err.response.data)
